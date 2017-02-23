@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Products</h1>
+
+<div class="container">
+  <section class="product-list">
+    <% @products.each do |product| %>
+      <article class="product">
+        <header class="cover">
+          <%= image_tag(product.image_url, class: 'list_image') %>
+        </header>
+        <section class="description">
+          <h4 class="title"><%= product.title %></h4>
+        </section>
+        <footer class="actions">
+          <div class="interactions">
+            <%= link_to 'Show', product %>
+            <%= link_to 'Edit', edit_product_path(product) %>
+            <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </div>
+        </footer>
+
+      </article>
+    <% end%>
+  </section>
+</div>
+<br>
+
+<%= link_to 'New Product', new_product_path %>

@@ -1,0 +1,70 @@
+// Place all the styles related to the Products controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.products {
+	* {
+		display: block;
+		box-sizing: border-box;
+	}
+	margin: 0;
+	background-color: #FAFAFA;
+}
+
+.product-list {
+	:before {
+		content: ' ';
+		display: table;
+	}
+	display: table;
+	content: ' ';
+	box-sizing: border-box;
+
+	.product {
+		display: block;
+		float: left;
+		box-sizing: border-box;
+		position: relative;
+
+		width: calc((100% - 40px)/2);
+		margin-right: 20px;
+		margin-bottom: 20px;
+
+		background-color: #fff;
+
+		.cover {
+			display: block;
+			box-sizing: border-box;
+			position: relative;
+
+			color: #777;
+			font-size: 14px;
+			line-height: 1em;
+
+			overflow: hidden;
+			padding-bottom: 75%;
+			height: 0;
+
+			img {
+				width: 100%;
+				vertical-align: middle;
+				box-sizing: border-box;
+			}
+		}
+
+		.description {
+			display: block;
+			padding: 1em;
+		}
+
+		.actions {
+			display: block;
+			padding: 0 1em 1em;
+			width: 100%;
+		}
+
+		.interactions {
+			float: right;
+		}
+	}
+}
