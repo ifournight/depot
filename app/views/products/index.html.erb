@@ -1,8 +1,11 @@
-<div class="container">
-  <p id="notice"><%= notice %></p>
-  <h1>Products</h1>
-  <section class="product-list">
-    <%= render @products %>
-  </section>
-</div>
-<%= link_to 'New Product', new_product_path %>
+<p id="notice"><%= notice %></p> 
+
+<h1>Products</h1>
+
+<table>
+  <%= render @products %>
+</table>
+
+<br />
+
+<%= link_to 'New product', new_product_path %>

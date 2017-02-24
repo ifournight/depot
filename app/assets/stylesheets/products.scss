@@ -3,68 +3,49 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .products {
-	* {
-		display: block;
-		box-sizing: border-box;
-	}
-	margin: 0;
-	background-color: #FAFAFA;
-}
+  table {
+    border-collapse: collapse;
+  }
 
-.product-list {
-	:before {
-		content: ' ';
-		display: table;
-	}
-	display: table;
-	content: ' ';
-	box-sizing: border-box;
+  table tr td {
+    padding: 5px;
+    vertical-align: top;
+  }
 
-	.product {
-		display: block;
-		float: left;
-		box-sizing: border-box;
-		position: relative;
+  .list_image {
+    width:  60px;
+    height: 70px;
+  }
 
-		width: calc((100% - 40px)/2);
-		margin-right: 20px;
-		margin-bottom: 20px;
+  .list_description {
+    width: 60%;
 
-		background-color: #fff;
+    dl {
+      margin: 0;
+    }
 
-		.cover {
-			display: block;
-			box-sizing: border-box;
-			position: relative;
+    dt {
+      color:        #244;
+      font-weight:  bold;
+      font-size:    larger;
+    }
 
-			color: #777;
-			font-size: 14px;
-			line-height: 1em;
+    dd {
+      margin: 0;
+    }
+  }
 
-			overflow: hidden;
-			padding-bottom: 75%;
-			height: 0;
+  .list_actions {
+    font-size:    x-small;
+    text-align:   right;
+    padding-left: 1em;
+  }
 
-			img {
-				width: 100%;
-				vertical-align: middle;
-				box-sizing: border-box;
-			}
-		}
+  .list_line_even {
+    background:   #e0f8f8;
+  }
 
-		.description {
-			display: block;
-			padding: 1em;
-		}
-
-		.actions {
-			display: block;
-			padding: 0 1em 1em;
-			width: 100%;
-		}
-
-		.interactions {
-			float: right;
-		}
-	}
+  .list_line_odd {
+    background:   #f8b0f8;
+  }
 }
