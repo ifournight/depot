@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class ProductsControllerTest < ActionDispatch::IntegrationTest
-  setup do
+  def setup
     @product = products(:ruby)
     @create = {
       title: 'Product3',
@@ -14,6 +14,15 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
     get products_url
     assert_response :success
+    product_count = Product.count
+    assert_select 'table tr[class^="list_line_"]', product_count
+    products.each do |product|
+      assert_select image_tag(product.image_url)
+      assert_select 'a[href=?]', edit_product_path(product)
+      assert_select 'a[href=?]', product_path(product)
+      assert_select 'a[href=? data-method="delete"]', product_path(product)
+    end
+    assert_select 'a[href=?]', new_product_path
   end
 
   test "should get new" do
