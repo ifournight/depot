@@ -8,3 +8,9 @@ ruby:
       delivered fast, you should add Ruby to your toolbox.
   price: 49.50
   image_url: ruby.png
+
+qc35:
+  title: BOSE QuietComfort 35
+  description: 静情聆听 细致心跳
+  price: 399.99
+  image_url: https://making-photos.b0.upaiyun.com/photos/2b85518b63baa3bd4627e86d339b2f89.jpg!middle

@@ -7,4 +7,14 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  def assert_select_and_match(selector, match, match_count=1)
+    match_counter = 0
+    assert_select selector do |elements|
+      elements.each do |element|
+        match_counter += 1 if element.content.match(match)
+      end
+    end
+
+    assert_equal match_counter, match_count
+  end
 end
