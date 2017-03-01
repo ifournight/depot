@@ -1,30 +1,35 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Pragprog Books Online Store</title>
-    <%= csrf_meta_tags %>
+
+<head>
+  <title>Pragprog Books Online Store</title>
+  <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body class='<%= controller.controller_name %>'>
-    <div id="banner">
-      <%= image_tag 'logo.svg', alt: 'The Progmatic Bookshelf' %>
+<body class='<%= controller.controller_name %>'>
+  <div id="banner">
+    <%= image_tag 'logo.svg', alt: 'The Progmatic Bookshelf' %>
       <span class="title"><%= @page_title %></span>
+  </div>
+  <div id="columns">
+    <div id="side">
+      <% if @cart %>
+        <%= render 'shared/cart_layout', cart: @cart %>
+      <% end %>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Questions</a></li>
+        <li><a href="#">News</a></li>
+        <li><a href="#">Contace</a></li>
+      </ul>
     </div>
-    <div id="columns">
-      <div id="side">
-        <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Questions</a></li>
-          <li><a href="#">News</a></li>
-          <li><a href="#">Contace</a></li>
-        </ul>
-      </div>
-      <div id="main">
-        <%= yield %>
-      </div>
+    <div id="main">
+      <%= yield %>
     </div>
-  </body>
+  </div>
+</body>
+
 </html>

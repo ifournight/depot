@@ -1,0 +1,2 @@
+$('#cart').wrap('</p>').parent().html('<%= j(render "shared/cart_layout", cart: @cart)%>');
+$('#cart').unwrap();

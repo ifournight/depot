@@ -1,0 +1,3 @@
+$('#cart').wrap('</p>').parent().html('<%= j(render "shared/cart_layout", cart: @cart)%>');
+$('#cart').unwrap();
+$('#cart .current_item').css({'backgroundColor': '#eee'}).animate({'backgroundColor': '#141'}, 500)

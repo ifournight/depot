@@ -1,0 +1,17 @@
+<% if line_item == @current_item %>
+<tr id='<%="line_item-#{line_item.id}"%>' class='current_item'>
+<% else %>
+<tr id='<%="line_item-#{line_item.id}"%>'>
+<% end %>
+  <td class="item_count">
+    <%= line_item.quantity %>&times;</td>
+  <td class="item_title">
+    <%= line_item.product.title %>
+  </td>
+  <td class="item_price">
+    <%= number_to_currency(line_item.product.price) %>
+  </td>
+  <td class="delete-line_item">
+    <%= button_to 'delete', line_item, method: :delete, remote: true %>
+  </td>
+</tr>
