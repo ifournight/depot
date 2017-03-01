@@ -9,6 +9,14 @@
         </td>
       </tr>
   </table>
+  <% if @order %>
+    <%= link_to 'Continue shopping', 
+                store_index_url %>
+  <% else %>
+    <%= button_to 'Checkout', 
+                  new_order_path,
+                    method: :get %>
+  <% end %>
   <%= button_to 'Empty cart',
                 cart,
                   method: :delete,
