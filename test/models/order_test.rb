@@ -2,6 +2,7 @@ require 'test_helper'
 
 class OrderTest < ActiveSupport::TestCase
   def setup
+    super
     @valid = {
       name: 'ifournight',
       email: 'ifournight@gmail.com',

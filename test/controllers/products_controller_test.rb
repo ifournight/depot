@@ -2,6 +2,7 @@ require 'test_helper'
 
 class ProductsControllerTest < ActionDispatch::IntegrationTest
   def setup
+    super
     @product = products(:ruby)
     @create = {
       title: 'Product3',

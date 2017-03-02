@@ -2,6 +2,7 @@ require 'test_helper'
 
 class LineItemTest < ActiveSupport::TestCase
   def setup
+    super
     @valid = {
       cart_id: carts(:one).id,
       product_id: products(:ruby).id

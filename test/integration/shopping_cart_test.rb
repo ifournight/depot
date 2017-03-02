@@ -4,6 +4,7 @@ require 'test_helper'
 class ShoppingCartTest < ActionDispatch::IntegrationTest
   include ActiveJob::TestHelper
   def setup
+    super
     @ruby = products(:ruby)
     @qc35 = products(:qc35)
   end

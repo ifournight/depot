@@ -2,6 +2,7 @@ require 'test_helper'
 
 class ProductTest < ActiveSupport::TestCase
   def setup
+    super
     @create = {
       title: 'Product3',
       description: "Ruby is fun!",

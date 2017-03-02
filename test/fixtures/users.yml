@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+ifournight:
+  name: ifournight
+  password_digest: <%= BCrypt::Password.create('secret') %>
+
+sweetkuma:
+  name: sweetkuma
+  password_digest: <%= BCrypt::Password.create('secret') %>
+
+momo:
+  name: momo
+  password_digest: <%= BCrypt::Password.create('secret') %>

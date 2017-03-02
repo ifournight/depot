@@ -2,6 +2,7 @@ require 'test_helper'
 
 class OrderMailerTest < ActionMailer::TestCase
   def setup
+    super
     @order = orders(:one)
   end
   test 'new order' do
