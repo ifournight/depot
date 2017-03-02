@@ -32,11 +32,22 @@ class OrdersControllerTest < ActionDispatch::IntegrationTest
   test "should create order" do
     post line_items_url, params: {product_id: products(:ruby).id}
 
-    assert_difference('Order.count') do
+    assert_difference(['Order.count']) do
       post orders_url, params: { order: { address: @order.address, email: @order.email, name: @order.name, pay_type: @order.pay_type } }
     end
+
     assert_redirected_to store_index_path
     assert_equal flash[:notice], 'Thank you for your order.'
+  end
+
+  test 'should create order result email delivered' do
+    post line_items_url, params: {product_id: products(:ruby).id}
+    assert_difference 'ActionMailer::Base.deliveries.size', 1 do
+      post orders_url, params: { order: { address: @order.address, email: @order.email, name: @order.name, pay_type: @order.pay_type } }      
+    end
+
+    email = ActionMailer::Base.deliveries.last
+    assert_equal @order.email, email.to[0]
   end
 
   test "should show order" do

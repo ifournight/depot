@@ -14,4 +14,9 @@ two:
   product: qc35
   cart: two
   quantity: 1
+
+three:
+  product: qc35
+  order: one
+  quantity: 1
 # column: value
