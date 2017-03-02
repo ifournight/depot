@@ -2,6 +2,7 @@ require 'test_helper'
 
 # Integration test that imitating user shopping process
 class ShoppingCartTest < ActionDispatch::IntegrationTest
+  include ActiveJob::TestHelper
   def setup
     @ruby = products(:ruby)
     @qc35 = products(:qc35)
@@ -55,6 +56,57 @@ class ShoppingCartTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_empty_cart_jquery
   end
+
+  test 'buy a product' do
+    get store_index_url
+    assert_empty_cart
+
+    # add to cart
+    assert_difference 'LineItem.count', 1 do
+      post line_items_path(product_id: @ruby.id)
+    end
+
+    assert_redirected_to store_index_url
+    follow_redirect!
+    assert_cart(current_item.cart)
+
+    last_order_count = Order.count
+    get new_order_url
+    perform_enqueued_jobs do
+      post orders_url, params: { 
+        order: {
+          name: 'ifournight',
+          email: 'ifournight@gmail.com',
+          address: 'mars',
+          pay_type: Order.pay_types['Credit cart']
+        }
+      }
+
+      assert_redirected_to store_index_url
+      follow_redirect!
+
+      assert_equal last_order_count + 1, Order.count
+
+      order = Order.last
+      mail = ActionMailer::Base.deliveries.last
+      assert_equal 'ifournight@gmail.com', mail.to[0]
+      assert_equal "Hi, #{order.name}, Thanks for the order.", mail.subject
+
+      order.line_items.each do |item|
+        assert_match item.product.title, mail.body.to_s
+      end
+    end
+  end
+
+  # test 'should create order result email delivered' do
+  #   post line_items_url, params: {product_id: products(:ruby).id}
+  #   assert_difference 'ActionMailer::Base.deliveries.size', 1 do
+  #     post orders_url, params: { order: { address: @order.address, email: @order.email, name: @order.name, pay_type: @order.pay_type } }      
+  #   end
+
+  #   email = ActionMailer::Base.deliveries.last
+  #   assert_equal @order.email, email.to[0]
+  # end
 
   private
 
