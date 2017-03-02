@@ -11,8 +11,10 @@
 
 <body class='<%= controller.controller_name %>'>
   <div id="banner">
-    <%= image_tag 'logo.svg', alt: 'The Progmatic Bookshelf' %>
+    <a href=<%= store_index_path %> >
+      <%= image_tag 'logo.svg', alt: 'The Progmatic Bookshelf' %>
       <span class="title"><%= @page_title %></span>
+    </a>
   </div>
   <div id="columns">
     <div id="side">
@@ -20,10 +22,10 @@
         <%= render 'shared/cart_layout', cart: @cart %>
       <% end %>
       <ul>
-        <li><a href="#">Home</a></li>
+        <li><a href=<%= store_index_path %> >Home</a></li>
         <li><a href="#">Questions</a></li>
         <li><a href="#">News</a></li>
-        <li><a href="#">Contace</a></li>
+        <li><a href="#">Contact</a></li>
       </ul>
       <% if session[:user_id] %>
         <ul>
