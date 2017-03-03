@@ -4,10 +4,7 @@ Rails.application.routes.draw do
   post   'login',  to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
 
-  resources :users
-  resources :orders
-  resources :line_items
-  resources :carts
+  resources :users, :orders, :line_items, :carts
   resources :products do
     get :who_bought, on: :member
   end
